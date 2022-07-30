@@ -6,14 +6,16 @@
         @submit.stop.prevent="handleSubmit"
       >
         <div class="form-group">
-          <label for="email">Document Number CC/DNI</label>
+          <div v-b-tooltip.hover title="Needed for certification (Optional)" >
+            <label for="email">Document Number CC/DNI</label>
+            <AlertCircleOutline :size="20" />
+          </div>
           <b-form-input
             id="usercc"
             v-model="usercc"
             :autofocus="true"
             type="number"
             placeholder="000000"
-            required
           />
         </div>
         <div class="form-group">
@@ -62,8 +64,12 @@
 
 <script>
 import { mapMutations } from 'vuex'
+import AlertCircleOutline from 'vue-material-design-icons/AlertCircleOutline'
 const apiUrl = process.env.API_URL || 'http://localhost:1337'
 export default {
+  components: {
+    AlertCircleOutline
+  },
   data() {
     return {
       email: '',
