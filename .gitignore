@@ -210,3 +210,9 @@ yarn-error.log
 **/IntegrationServer/packages/Wm*/
 
 # End of https://www.toptal.com/developers/gitignore/api/node,vuejs,nuxtjs,linux,visualstudiocode,webmethods
+
+### Nuxtjs ###
+# Nuxt build
+.nuxt
+
+# End of https://www.toptal.com/developers/gitignore/api/nuxtjs
