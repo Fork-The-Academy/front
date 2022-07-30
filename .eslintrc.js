@@ -7,12 +7,12 @@ module.exports = {
     'plugin:vue/vue3-essential',
     'standard'
   ],
+  parser: "@babel/eslint-parser",
   parserOptions: {
-    ecmaVersion: 6,
-    sourceType: 'module',
-    ecmaFeatures: {
-      module: true
-    }
+    parser: '@babel/eslint-parser',
+    requireConfigFile: false,
+    ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
+    sourceType: 'module' // Allows for the use of imports
   },
   plugins: [
     'vue'
