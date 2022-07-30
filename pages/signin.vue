@@ -1,7 +1,10 @@
 <template>
   <section class="container">
     <div class="col-md-6 offset-md-3 mt-3">
-      <form autocomplete="off" @submit.stop.prevent="handleSubmit">
+      <form
+        autocomplete="off"
+        @submit.stop.prevent="handleSubmit"
+      >
         <div class="form-group">
           <label for="email">Email</label>
           <b-form-input
@@ -35,7 +38,10 @@
         </button>
         <p class="text-center mt-3">
           Not account yet?
-          <router-link :to="{ name: 'signup' }" tag="a">
+          <router-link
+            :to="{ name: 'signup' }"
+            tag="a"
+          >
             Register Here
           </router-link>
         </p>
@@ -46,9 +52,9 @@
 
 <script>
 import Strapi from 'strapi-sdk-javascript/build/main'
+import { mapMutations } from 'vuex'
 const apiUrl = process.env.API_URL || 'http://localhost:1337'
 const strapi = new Strapi(apiUrl)
-import { mapMutations } from 'vuex'
 export default {
   data() {
     return {

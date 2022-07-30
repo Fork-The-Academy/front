@@ -6,17 +6,26 @@
         type="text"
         class="form-control"
         placeholder="Search..."
-      />
+      >
     </div>
     <b-form-checkbox-group
       id="checkbox-group-2"
       v-model="selectedProposals"
       name="flavour-2"
     >
-      <ul v-if="proposals" class="card-columns list-unstyled">
-        <li v-for="proposal in filteredList" :key="proposal.id" class="card">
+      <ul
+        v-if="proposals"
+        class="card-columns list-unstyled"
+      >
+        <li
+          v-for="proposal in filteredList"
+          :key="proposal.id"
+          class="card"
+        >
           <div class="card-body">
-            <h5 class="card-title">{{ proposal.name }}</h5>
+            <h5 class="card-title">
+              {{ proposal.name }}
+            </h5>
             <p class="card-text">
               {{ proposal.description || 'No description provided' }}
             </p>
@@ -29,12 +38,15 @@
               size="lg"
             />
             Vote!
-            <p v-if="userRole == 'admin'" class="card-text">
+            <p
+              v-if="userRole == 'admin'"
+              class="card-text"
+            >
               {{ 'voteCount: ' + proposal.voteCount || 'VoteCount' }}
             </p>
             <b-button
-              v-b-modal="'deleteModal' + proposal.id"
               v-if="userRole == 'admin'"
+              v-b-modal="'deleteModal' + proposal.id"
               variant="danger"
             >
               Delete
@@ -48,7 +60,10 @@
       </ul>
     </b-form-checkbox-group>
     <vote-proposal-modal :selected-proposals="selectedProposals" />
-    <b-button v-b-modal="'voteModal'" variant="primary">
+    <b-button
+      v-b-modal="'voteModal'"
+      variant="primary"
+    >
       vote
     </b-button>
     <div>

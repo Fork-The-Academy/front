@@ -64,7 +64,7 @@ export default {
     },
     async deleteProposal(id) {
       const config = {
-        headers: { Authorization: `Bearer ` + this.userToken() }
+        headers: { Authorization: 'Bearer ' + this.userToken() }
       }
       try {
         const response = await this.$axios.delete(

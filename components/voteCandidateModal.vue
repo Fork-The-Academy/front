@@ -14,7 +14,10 @@
           candidate ? candidate.name : ''
         }}
       </ul>
-      <form ref="form" @submit.stop.prevent="handleSubmit">
+      <form
+        ref="form"
+        @submit.stop.prevent="handleSubmit"
+      >
         <b-form-group
           :state="dateState"
           label="To vote for candidate please confirm your CC/DNI expiration date"
@@ -116,13 +119,13 @@ export default {
     },
     async vote(candidateId, userId, sendPassword) {
       const config = {
-        headers: { Authorization: `Bearer ` + this.userToken() }
+        headers: { Authorization: 'Bearer ' + this.userToken() }
       }
       const body = {
-        userId: userId,
+        userId,
         wallet: this.userWallet(),
-        candidateId: candidateId,
-        sendPassword: sendPassword
+        candidateId,
+        sendPassword
       }
       try {
         const response = await this.$axios.post(
@@ -130,13 +133,13 @@ export default {
           body,
           config
         )
-        if (response.data.status == 200) {
+        if (response.data.status === 200) {
           this.fetchCandidates()
           alert('You have been vote successfully.')
           this.loading = false
           return true
         }
-        if (response.data.status == 403) {
+        if (response.data.status === 403) {
           alert('Dates do not match.')
           this.loading = false
           return true

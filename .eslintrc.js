@@ -4,22 +4,32 @@ module.exports = {
     es2021: true
   },
   extends: [
-    'plugin:vue/vue3-essential',
+    'plugin:vue/recommended',
+    'eslint:recommended',
     'standard'
   ],
-  parser: '@babel/eslint-parser',
+  parser: 'vue-eslint-parser',
   parserOptions: {
     parser: '@babel/eslint-parser',
     requireConfigFile: false,
     ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
-    sourceType: 'module' // Allows for the use of imports
+    sourceType: 'module', // Allows for the use of imports
+    ecmaFeatures: {
+      globalReturn: false,
+      impliedStrict: false,
+      jsx: true
+    }
   },
-  plugins: [
-    'vue'
-  ],
+  plugins: ['vue'],
+  globals: {
+    $nuxt: true
+  },
   rules: {
     'space-before-function-paren': 0,
-    'vue/multi-word-component-names': 0
+    'vue/multi-word-component-names': 0,
+    'vue/no-unused-components': 1,
+    'vue/require-prop-type-constructor': 1,
+    'vue/no-reserved-component-names': 1
   },
-  ignorePatterns: ['src/test/*', './.nuxt'], // <<< ignore all files in test folder
+  ignorePatterns: ['src/test/*', './.nuxt'] // <<< ignore all files in test folder
 }

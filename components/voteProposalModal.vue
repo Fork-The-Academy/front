@@ -10,11 +10,17 @@
     >
       <p>You are about to vote for this proposals:</p>
       <ul class="card-columns list-unstyled">
-        <li v-for="proposal in selectedProposals" :key="proposal.proposalId">
+        <li
+          v-for="proposal in selectedProposals"
+          :key="proposal.proposalId"
+        >
           {{ proposal ? proposal.proposalName : '' }}
         </li>
       </ul>
-      <form ref="form" @submit.stop.prevent="handleSubmit">
+      <form
+        ref="form"
+        @submit.stop.prevent="handleSubmit"
+      >
         <b-form-group
           :state="dateState"
           label="To vote for proposals please confirm your CC/DNI expiration dat"
@@ -116,13 +122,13 @@ export default {
     },
     async vote(selectedProposals, userId, sendPassword) {
       const config = {
-        headers: { Authorization: `Bearer ` + this.userToken() }
+        headers: { Authorization: 'Bearer ' + this.userToken() }
       }
       const body = {
-        userId: userId,
+        userId,
         wallet: this.userWallet(),
-        selectedProposals: selectedProposals,
-        sendPassword: sendPassword
+        selectedProposals,
+        sendPassword
       }
       try {
         const response = await this.$axios.post(
@@ -130,13 +136,13 @@ export default {
           body,
           config
         )
-        if (response.data.status == 200) {
+        if (response.data.status === 200) {
           this.fetchProposals()
           alert('You have been vote successfully.')
           this.loading = false
           return true
         }
-        if (response.data.status == 403) {
+        if (response.data.status === 403) {
           alert('Dates do not match.')
           this.loading = false
           return true

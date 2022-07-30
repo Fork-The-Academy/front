@@ -1,7 +1,10 @@
 <template>
   <section class="container">
     <div class="col-md-6 offset-md-3 mt-3">
-      <form autocomplete="off" @submit.stop.prevent="handleSubmit">
+      <form
+        autocomplete="off"
+        @submit.stop.prevent="handleSubmit"
+      >
         <div class="form-group">
           <label for="email">Document Number CC/DNI</label>
           <b-form-input
@@ -28,8 +31,8 @@
           <label for="password">Expedition date CC</label>
           <b-form-input
             id="password"
-            :autofocus="true"
             v-model="password"
+            :autofocus="true"
             label="Expedition date"
             class="form-control"
             placeholder="24/12/1970"
@@ -45,7 +48,10 @@
         </button>
         <p class="text-center mt-3">
           Already have an account?
-          <router-link :to="{ name: 'signin' }" tag="a">
+          <router-link
+            :to="{ name: 'signin' }"
+            tag="a"
+          >
             Login Here
           </router-link>
         </p>
@@ -55,8 +61,8 @@
 </template>
 
 <script>
-const apiUrl = process.env.API_URL || 'http://localhost:1337'
 import { mapMutations } from 'vuex'
+const apiUrl = process.env.API_URL || 'http://localhost:1337'
 export default {
   data() {
     return {

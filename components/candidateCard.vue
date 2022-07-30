@@ -6,21 +6,33 @@
         type="text"
         class="form-control"
         placeholder="Search..."
-      />
+      >
     </div>
-    <ul v-if="candidates" class="card-columns list-unstyled">
-      <li v-for="candidate in filteredList" :key="candidate.id" class="card">
+    <ul
+      v-if="candidates"
+      class="card-columns list-unstyled"
+    >
+      <li
+        v-for="candidate in filteredList"
+        :key="candidate.id"
+        class="card"
+      >
         <div class="card-body">
-          <h5 class="card-title">{{ candidate.name }}</h5>
+          <h5 class="card-title">
+            {{ candidate.name }}
+          </h5>
           <b-button
-            v-b-modal="'deleteCandidateModal' + candidate.id"
             v-if="userRole == 'admin'"
+            v-b-modal="'deleteCandidateModal' + candidate.id"
             variant="danger"
           >
             Delete
           </b-button>
         </div>
-        <b-button v-b-modal="'voteModal'" variant="primary">
+        <b-button
+          v-b-modal="'voteModal'"
+          variant="primary"
+        >
           vote
         </b-button>
         <vote-candidate-modal

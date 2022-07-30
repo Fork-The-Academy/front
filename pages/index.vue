@@ -2,7 +2,11 @@
   <section class="container">
     <div class="row">
       <div class="col-md-12">
-        <b-tabs content-class="mt-3" fill align="center">
+        <b-tabs
+          content-class="mt-3"
+          fill
+          align="center"
+        >
           <b-tab
             v-if="userRole == 'admin'"
             title="Create Proposals and Candidates"
@@ -15,14 +19,20 @@
               </div>
             </div>
           </b-tab>
-          <b-tab title="Proposals" active>
+          <b-tab
+            title="Proposals"
+            active
+          >
             <div class="row">
               <div class="col-md-12">
                 <proposal-card />
               </div>
             </div>
           </b-tab>
-          <b-tab title="Candidates" active>
+          <b-tab
+            title="Candidates"
+            active
+          >
             <div class="row">
               <div class="col-md-12">
                 <candidate-card />
