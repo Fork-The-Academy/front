@@ -29,7 +29,10 @@ module.exports = {
     'vue/multi-word-component-names': 0,
     'vue/no-unused-components': 1,
     'vue/require-prop-type-constructor': 1,
-    'vue/no-reserved-component-names': 1
+    'vue/no-reserved-component-names': 1,
+    'vue/no-v-text-v-html-on-component': 0,
+    'vue/no-v-html': 0
+
   },
   ignorePatterns: ['src/test/*', './.nuxt'] // <<< ignore all files in test folder
 }

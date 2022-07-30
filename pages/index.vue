@@ -59,6 +59,7 @@ export default {
     CreateCandidatesForm,
     CandidateCard
   },
+  layout: 'landing',
   data() {
     return {
       query: ''

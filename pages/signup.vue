@@ -1,12 +1,66 @@
 <template>
-  <section class="container">
+  <v-container>
+    <v-row justify="center">
+      <v-col cols="12">
+        <h1 class="text-center">
+          ¡Regístrate!
+        </h1>
+      </v-col>
+      <v-col cols="12">
+        <v-card
+          style="max-width: 600px"
+          class="ma-auto"
+        >
+          <v-card-text>
+            <v-form>
+              <v-text-field
+                v-model="email"
+                autofocus
+                type="email"
+                label="Email"
+                required
+              />
+              <v-text-field
+                v-model="password"
+                :autofocus="true"
+                label="Contraseña"
+                type="password"
+                required
+              />
+              <v-btn
+                block
+                :disabled="loading"
+                dark
+                color="primary"
+                @click="handleSubmit()"
+              >
+                Registrarme
+              </v-btn>
+
+              <p class="text-center mt-3">
+                ¿Ya tienes cuenta?
+                <nuxt-link
+                  to="signin"
+                >
+                  Ingresa
+                </nuxt-link>
+              </p>
+            </v-form>
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
+  <!-- <section class="container">
     <div class="col-md-6 offset-md-3 mt-3">
       <form
         autocomplete="off"
         @submit.stop.prevent="handleSubmit"
       >
         <div class="form-group">
-          <div v-b-tooltip.hover title="Needed for certification (Optional)" >
+          <div
+            v-b-tooltip.hover
+            title="Needed for certification (Optional)"
+          >
             <label for="email">Document Number CC/DNI</label>
             <AlertCircleOutline :size="20" />
           </div>
@@ -59,17 +113,15 @@
         </p>
       </form>
     </div>
-  </section>
+  </section> -->
+  </v-container>
 </template>
 
 <script>
 import { mapMutations } from 'vuex'
-import AlertCircleOutline from 'vue-material-design-icons/AlertCircleOutline'
 const apiUrl = process.env.API_URL || 'http://localhost:1337'
 export default {
-  components: {
-    AlertCircleOutline
-  },
+  layout: 'landing',
   data() {
     return {
       email: '',
@@ -110,3 +162,15 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.container {
+  height: 100% !important;
+  display: flex;
+  align-items: center;
+}
+h1 {
+  font-size: 50px;
+  color: #fff;
+}
+</style>
