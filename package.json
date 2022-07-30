@@ -27,11 +27,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
-<<<<<<< HEAD
     "eslint": "^7.0.0",
-=======
-    "eslint": "7.32.0",
->>>>>>> 4c826035a5ffd6ecee503c4acec75d5ebcef6308
     "eslint-config-prettier": "^3.1.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-friendly-formatter": "^4.0.1",
