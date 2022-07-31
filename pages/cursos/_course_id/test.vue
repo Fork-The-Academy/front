@@ -132,6 +132,15 @@ export default {
             text: 'Has aprobado el test, estamos enviando el certificado a tu wallet',
             confirmButtonText: 'Sí'
           })
+
+        const payload = {
+          email: this.$auth.user.email,
+          nombre: this.$auth.user.wallet.publicKey
+        }
+
+        this.$axios.post('/certificates', payload).then(r => {
+
+        })
       } else {
         this.$swal
           .fire({

@@ -34,7 +34,7 @@
     <h1>Certificados</h1>
     <v-card flat>
       <v-card-title>
-        Total: {{balance}}
+        Total: {{ balance }}
       </v-card-title>
     </v-card>
   </v-container>
