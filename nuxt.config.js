@@ -54,7 +54,7 @@ module.exports = {
     ['@nuxtjs/vuetify', { iconfont: 'mdi' }]
   ],
 
-  modules: ['bootstrap-vue/nuxt', '@nuxtjs/axios'],
+  modules: ['bootstrap-vue/nuxt', '@nuxtjs/axios', '@nuxtjs/auth-next'],
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {

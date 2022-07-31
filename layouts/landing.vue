@@ -15,8 +15,9 @@
         dark
         color="primary"
         to="signin"
+        class="primary-button"
       >
-        <v-icon>mdi-user</v-icon>
+        <v-icon>mdi-account-circle</v-icon>
         Ingresar
       </v-btn>
       <v-btn
@@ -26,7 +27,7 @@
         dark
         color="primary"
         to="signup"
-        class="ml-2"
+        class="ml-2 primary-button"
       >
         <v-icon>mdi-user</v-icon>
         Registrarme

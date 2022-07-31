@@ -2,8 +2,10 @@
   <v-container>
     <v-row>
       <v-col
-        v-for="(course, index) in courses"
+        v-for="(course, index) in $store.state.courses.courses"
         :key="index"
+        cols="12"
+        md="4"
       >
         <v-card
           class="mx-auto my-12"
@@ -19,10 +21,10 @@
 
           <v-img
             height="250"
-            :src="course.img"
+            :src="course.image.formats.medium.url"
           />
 
-          <v-card-title v-html="course.title" />
+          <v-card-title v-html="course.name" />
 
           <v-card-text>
             <v-row
@@ -48,12 +50,34 @@
             />
           </v-card-text>
 
+          <v-card-text v-if="course.teacher">
+            <v-row>
+              <v-col>
+                <img
+                  class="teacher-picture"
+                  :src="course.teacher.image.formats.small.url"
+                  alt=""
+                >
+                {{ course.teacher.fullName }}
+              </v-col>
+            </v-row>
+          </v-card-text>
+
           <v-card-actions>
             <v-btn
               color="primary"
-              text
+              class="primary-button"
               dark
-              @click="reserve"
+              block
+              link
+              nuxt
+              :to="{
+                name: `courses-course_id`,
+                params: {
+                  course_id: course.id,
+                  course: course
+                }
+              }"
             >
               Comenzar
             </v-btn>
@@ -68,28 +92,26 @@
 export default {
   data() {
     return {
-      courses: [{
-        img: 'https://picsum.photos/200/300',
-        title: 'Course Title',
-        rating: 4.8,
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-      }, {
-        img: 'https://picsum.photos/200/300',
-        title: 'Course Title',
-        rating: 4.8,
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-      }, {
-        img: 'https://picsum.photos/200/300',
-        title: 'Course Title',
-        rating: 4.8,
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-      }]
+      courses: []
     }
+  },
+  created() {
+    this.getCourses()
   },
   methods: {
     async getCourses() {
-
+      const response = await this.$axios.get('/courses')
+      this.$store.commit('courses/set', response.data)
     }
   }
 }
 </script>
+
+<style scoped>
+.teacher-picture {
+    height: 30px;
+    width: 30px;
+    border-radius: 15px;
+    object-fit: cover;
+}
+</style>

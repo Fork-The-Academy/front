@@ -1,13 +1,20 @@
 <template>
   <v-app dark>
     <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
+      id="drawer"
       fixed
+      dark
       app
+      style="max-height: calc(100% - 16px); margin: 8px; border-radius: 20px"
     >
       <v-list>
+        <v-list-item
+          to="/"
+        >
+          <v-list-item-content>
+            ForkTheAcademy
+          </v-list-item-content>
+        </v-list-item>
         <v-list-item
           v-for="(item, i) in items"
           :key="i"
@@ -24,67 +31,11 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar
-      :clipped-left="clipped"
-      fixed
-      app
-    >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn
-        icon
-        @click.stop="miniVariant = !miniVariant"
-      >
-        <v-icon>mdi-{{ `chevron-${miniVariant ? "right" : "left"}` }}</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="clipped = !clipped"
-      >
-        <v-icon>mdi-application</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="fixed = !fixed"
-      >
-        <v-icon>mdi-minus</v-icon>
-      </v-btn>
-      <v-toolbar-title v-html="title" />
-      <v-spacer />
-      <v-btn
-        icon
-        @click.stop="rightDrawer = !rightDrawer"
-      >
-        <v-icon>mdi-menu</v-icon>
-      </v-btn>
-    </v-app-bar>
     <v-main>
       <v-container>
         <Nuxt />
       </v-container>
     </v-main>
-    <v-navigation-drawer
-      v-model="rightDrawer"
-      :right="right"
-      temporary
-      fixed
-    >
-      <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light>
-              mdi-repeat
-            </v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-    <v-footer
-      :absolute="!fixed"
-      app
-    >
-      <span>&copy; {{ new Date().getFullYear() }}</span>
-    </v-footer>
   </v-app>
 </template>
 
@@ -93,26 +44,34 @@ export default {
   name: 'DefaultLayout',
   data() {
     return {
-      clipped: false,
-      drawer: false,
-      fixed: false,
       items: [
         {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/'
+          icon: 'mdi-book-open-blank-variant',
+          title: 'Cursos',
+          to: '/courses'
         },
         {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
+          icon: 'mdi-account-circle',
+          title: 'Perfil',
+          to: '/perfil'
         }
-      ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js'
+      ]
     }
   }
 }
 </script>
+
+<style>
+a:hover {
+  text-decoration: none !important;
+}
+
+#drawer {
+  background: rgb(35,22,251);
+  background: linear-gradient(148deg, rgba(35,22,251,1) 0%, rgba(30,30,168,1) 35%, rgba(26,55,180,1) 67%, rgba(0,212,255,1) 100%) !important;
+}
+
+.primary-button {
+  background: linear-gradient(148deg, rgba(35,22,251,1) 0%, rgba(30,30,168,1) 35%, rgba(26,55,180,1) 67%, rgba(0,212,255,1) 100%) !important;
+}
+</style>
