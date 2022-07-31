@@ -2,18 +2,20 @@ import Web3 from 'web3'
 
 // const ContractKit = require('@celo/contractkit')
 
-export default class CeloService {
+export default class Web3Service {
   constructor(env) {
     this.provider = undefined
   }
 
   async connect() {
     if (window.ethereum) {
-      this.provider = await new Web3(new Web3.providers.HttpProvider(this.env.CELO_RPC))
+      this.provider = await new Web3(new Web3.providers.HttpProvider('https://polygon-rpc.com/'))
     }
   }
 
   async getBalance(tokenAddress, publicKey) {
+    this.provider = await new Web3(new Web3.providers.HttpProvider('https://polygon-rpc.com/'))
+
     const minABI = [
       // balanceOf
       {

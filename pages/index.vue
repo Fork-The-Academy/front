@@ -1,6 +1,10 @@
 <template>
   <v-container>
-    <h1>Index</h1>
+    <img
+      src="https://pbs.twimg.com/media/FRRtbSlXoAE47zS.jpg"
+      alt=""
+      style="border-radius: 15px"
+    >
   </v-container>
 </template>
 
