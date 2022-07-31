@@ -97,10 +97,6 @@
 </template>
 
 <script>
-import Strapi from 'strapi-sdk-javascript/build/main'
-import { mapMutations } from 'vuex'
-const apiUrl = process.env.API_URL || 'http://localhost:1337'
-const strapi = new Strapi(apiUrl)
 export default {
   layout: 'landing',
   data() {
@@ -112,25 +108,26 @@ export default {
   },
   methods: {
     async handleSubmit() {
+      this.loading = true
       try {
-        this.loading = true
-        const response = await strapi.login(this.email, this.password)
-        this.loading = false
-        if (response.user && response.jwt) {
-          this.setUser(JSON.stringify(response.user))
-          this.setJwt(JSON.stringify(response.jwt))
-          this.$router.push('/')
+        await this.$auth.loginWith('local', {
+          data: { identifier: this.email, password: this.password }
+        })
+      } catch (e) {
+        console.log('Error', e.response)
+        if (e.response) {
+          this.$swal
+            .fire({
+              title: e.response.data.message[0].messages[0].message,
+              confirmButtonText: 'Ok'
+              // icon: 'question',
+              // showCancelButton: true,
+              // cancelButtonText: 'No'
+            })
         }
-      } catch (err) {
-        this.loading = false
-        console.log(err)
-        alert('invalid credentials please try again')
       }
-    },
-    ...mapMutations({
-      setUser: 'auth/setUser',
-      setJwt: 'auth/setJwt'
-    })
+      this.loading = false
+    }
   }
 }
 </script>

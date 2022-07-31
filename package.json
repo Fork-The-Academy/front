@@ -28,7 +28,9 @@
     "showdown": "^2.1.0",
     "strapi-sdk-javascript": "^0.3.0",
     "vue-material-design-icons": "^5.1.2",
-    "vue-stripe-elements-plus": "^0.2.9"
+    "vue-stripe-elements-plus": "^0.2.9",
+    "vue-sweetalert2": "^5.0.5",
+    "web3": "^1.7.4"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.18.9",

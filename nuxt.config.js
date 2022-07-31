@@ -5,7 +5,7 @@ module.exports = {
    ** Headers of the page
    */
   head: {
-    title: 'FTA | Fork The Academy',
+    title: 'Fork The Academy',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -24,6 +24,11 @@ module.exports = {
   env: {
     API_URL: process.env.API_URL
   },
+
+  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
+  plugins: [
+    { src: '@/plugins/web3.js', mode: 'client' }
+  ],
 
   /*
    ** Customize the progress bar color
@@ -54,7 +59,36 @@ module.exports = {
     ['@nuxtjs/vuetify', { iconfont: 'mdi' }]
   ],
 
-  modules: ['bootstrap-vue/nuxt', '@nuxtjs/axios', '@nuxtjs/auth-next'],
+  modules: ['bootstrap-vue/nuxt', '@nuxtjs/axios', '@nuxtjs/auth-next', 'vue-sweetalert2/nuxt'],
+
+  sweetalert: {
+    confirmButtonColor: '#1e1ea8'
+  },
+
+  auth: {
+    // Options
+    strategies: {
+      local: {
+        token: {
+          property: 'jwt'
+        },
+        user: {
+          property: false
+        },
+        endpoints: {
+          login: {
+            url: 'auth/local',
+            method: 'post'
+          },
+          user: {
+            url: 'users/me',
+            method: 'get'
+          },
+          logout: false
+        }
+      }
+    }
+  },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {

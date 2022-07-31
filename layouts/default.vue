@@ -12,7 +12,11 @@
           to="/"
         >
           <v-list-item-content>
-            ForkTheAcademy
+            <img
+              src="/logo-white.svg"
+              alt=""
+              style="height: 50px"
+            >
           </v-list-item-content>
         </v-list-item>
         <v-list-item
@@ -48,7 +52,7 @@ export default {
         {
           icon: 'mdi-book-open-blank-variant',
           title: 'Cursos',
-          to: '/courses'
+          to: '/cursos'
         },
         {
           icon: 'mdi-account-circle',

@@ -16,14 +16,26 @@
       flat
     >
       <v-card-title>{{ $store.state.courses.selectedCourse.title }}</v-card-title>
+      <v-card-text>
+        <p v-html="convertContent($store.state.courses.selectedCourse.content)" />
+      </v-card-text>
       <v-card-actions class="justify-center">
         <v-btn
           color="primary"
           class="primary-button px-12"
           dark
+          link
           x-large
+          nuxt
+          :to="{
+            name: `cursos-course_id-test`,
+            params: {
+              course_id: course_id,
+              course: $store.state.courses.selectedCourse
+            }
+          }"
         >
-          Enviar
+          Tomar el test
         </v-btn>
       </v-card-actions>
     </v-card>
@@ -31,6 +43,7 @@
 </template>
 
 <script>
+import showdown from 'showdown'
 
 export default {
   data() {
@@ -46,6 +59,13 @@ export default {
   head() {
     return {
       title: this.$store.state.courses.selectedCourse.title
+    }
+  },
+  methods: {
+    convertContent(content) {
+      const converter = new showdown.Converter()
+      const html = converter.makeHtml(content)
+      return html
     }
   }
 }

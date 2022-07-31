@@ -1,6 +1,11 @@
 <template>
   <v-container>
     <v-row>
+      <v-col>
+        <h1>Cursos disponibles</h1>
+      </v-col>
+    </v-row>
+    <v-row>
       <v-col
         v-for="(course, index) in $store.state.courses.courses"
         :key="index"
@@ -72,7 +77,7 @@
               link
               nuxt
               :to="{
-                name: `courses-course_id`,
+                name: `cursos-course_id`,
                 params: {
                   course_id: course.id,
                   course: course
