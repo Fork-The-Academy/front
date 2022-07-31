@@ -139,7 +139,7 @@ export default {
         }
 
         this.$axios.post('/certificates', payload).then(r => {
-
+          console.log(r)
         })
       } else {
         this.$swal
